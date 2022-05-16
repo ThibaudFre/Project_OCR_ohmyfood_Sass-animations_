@@ -1,0 +1,25 @@
+{
+  "name": "project_ocr_ohmyfood_sass-animations_",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ThibaudFre/Project_OCR_ohmyfood_Sass-animations_.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ThibaudFre/Project_OCR_ohmyfood_Sass-animations_/issues"
+  },
+  "homepage": "https://github.com/ThibaudFre/Project_OCR_ohmyfood_Sass-animations_#readme",
+  "dependencies": {
+    "autoprefixer": "^10.4.7",
+    "postcss": "^8.4.13",
+    "postcss-cli": "^9.1.0",
+    "sass": "^1.51.0"
+  }
+}
