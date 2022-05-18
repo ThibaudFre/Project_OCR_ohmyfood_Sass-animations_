@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "sass": "sass ./sass/main.scss:./public/css/style.css -w --style nested",
+    "prefix": "postcss css to compil --use autoprefixer -d./where_to_put_the_result"
   },
   "repository": {
     "type": "git",
@@ -12,6 +13,7 @@
   },
   "author": "",
   "license": "ISC",
+  "browserslist": "last 4 versions",
   "bugs": {
     "url": "https://github.com/ThibaudFre/Project_OCR_ohmyfood_Sass-animations_/issues"
   },
