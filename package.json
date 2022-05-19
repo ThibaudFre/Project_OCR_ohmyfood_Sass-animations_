@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "sass": "sass ./sass/main.scss:./public/css/style.css -w --style nested",
+    "sass": "sass --watch ./sass/main.scss:./css/style.css",
     "prefix": "postcss css to compil --use autoprefixer -d./where_to_put_the_result"
   },
   "repository": {
