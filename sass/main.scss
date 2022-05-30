@@ -109,6 +109,10 @@ header{
         padding: 15px 11px 15px 11px;
         box-shadow: $shadow;
         cursor: pointer;
+        a{
+            text-decoration: none;
+            color: #ffff;
+        }
     }
 }
 
@@ -146,7 +150,6 @@ header{
             justify-content: center;
         }
         @include tablet-screen-S{
-            width: 5;
             justify-content: center;
         }
         @include tablet-screen-M{
@@ -261,19 +264,21 @@ header{
          object-fit: cover; 
      }
     
-     .under_card_img{
-        display: flex;
-        justify-content: space-between;
-        padding: 7px 0 12px 5px;
+
+     h3{
+         padding: 15px 0 5px 10px;
      }
-     h3, p{
-         padding: 0 0 5px 10px;
+     p{
+        padding: 0 0 20px 10px;
      }
+
      .heart{
         width: 15px;
         height: 15px;
         margin: 15px 20px 0 0;
-        position: relative;
+        position: absolute;
+        right: 15px;
+        bottom: 35px;
         transform: rotate(45deg) scale(0.8);
         border-bottom: 0.20em solid black;
         border-right: 0.20em solid black;
