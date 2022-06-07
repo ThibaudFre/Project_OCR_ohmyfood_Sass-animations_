@@ -1,0 +1,18 @@
+
+button{
+    background: $gradient;
+    color: white;
+    font-size: 16px;
+    min-width: 212px;
+    border-radius: 25px;
+    border: none;
+    padding: 15px 11px 15px 11px;
+    box-shadow: $shadow;
+    cursor: pointer;
+    &:focus{
+        outline: 2px solid $primary-color;
+        border-radius: 3px;
+        background-color: adjust-color($color: $primary-color,  $lightness: 35%);
+        color: #0e0d0d              ;       
+    } 
+}

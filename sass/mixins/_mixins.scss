@@ -1,0 +1,43 @@
+@mixin paddingIFoot($numb, $top, $right, $down, $left) {
+    &:nth-child(#{$numb}){
+        i{
+            padding: $top $right $down $left;
+            font-size: 12px;
+        }
+    }
+}
+
+@mixin mobile-screen-L {
+    @media screen and (min-width: map-get($breakpoints, mobile-large)) {
+        @content;
+    }
+}
+
+@mixin tablet-screen-940px-menu {
+    @media screen and (min-width: map-get($breakpoints, tablet-940)) {
+        @content;
+    }
+}
+
+@mixin tablet-screen-S {
+    @media screen and (min-width: map-get($breakpoints, tablet-small)) {
+        @content;
+    }
+}
+
+@mixin tablet-screen-M {
+    @media screen and (min-width: map-get($breakpoints, tablet-medium)) {
+        @content;
+    }
+}
+@mixin desktop-screen-1215px-menu {
+    @media screen and (min-width: map-get($breakpoints, desktop-1215)) {
+        @content;
+    }
+}
+
+@mixin desktop-screen {
+        @media screen and (min-width: map-get($breakpoints, desktop)) {
+            @content;
+        }
+}

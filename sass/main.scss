@@ -1,45 +1,7 @@
 @import "./utils/variables";
-
-
-@mixin cardImgPos($numb, $x, $y){
-    & :nth-child(#{$numb}){
-        img{
-            object-position: $x $y; 
-        } 
-    }
-}
-
-@mixin paddingIFoot($numb, $top, $right, $down, $left) {
-    &:nth-child(#{$numb}){
-        i{
-            padding: $top $right $down $left;
-            font-size: 12px;
-        }
-    }
-}
-@mixin mobile-screen-L {
-    @media screen and (min-width: map-get($breakpoints, mobile-large)) {
-        @content;
-    }
-}
-
-@mixin tablet-screen-S {
-    @media screen and (min-width: map-get($breakpoints, tablet-small)) {
-        @content;
-    }
-}
-
-@mixin tablet-screen-M {
-    @media screen and (min-width: map-get($breakpoints, tablet-medium)) {
-        @content;
-    }
-}
-
-@mixin desktop-screen {
-        @media screen and (min-width: map-get($breakpoints, desktop)) {
-        @content;
-    }
-}
+@import "./components/_footer";
+@import "./components/button";
+@import "./mixins/mixins";
 
 *{
     margin: 0;
@@ -47,7 +9,14 @@
     font-family: 'Roboto', sans-serif;
 }
 
-
+input, a{
+    &:focus{
+        outline: 2px solid $primary-color;
+        border-radius: 3px;
+        background-color: adjust-color($color: $primary-color,  $lightness: 35%);
+        color: #0e0d0d              ;       
+    }   
+}
 
 header{
     display: flex;
@@ -66,11 +35,14 @@ header{
     box-shadow: 0px 23px 19px -33px #0e0d0d inset;
     display: flex;
     justify-content: center;
-    padding: 15px 0 15px 54px;
+    align-items: center;
+    padding: 10px 0 10px 54px;
     font-size: 17px;
+
     input{
         margin-left: 16px;
         border: none;
+        padding: 5px;
         height: 100%;
         font-size: 17px;
         font-weight: 500;
@@ -99,21 +71,6 @@ header{
         font-weight: 350;
         margin: 0 0 29px 0;
     }
-    button{
-        background: linear-gradient(176deg, $secondary-color 10%, $primary-color 100%);
-        color: white;
-        font-size: 16px;
-        min-width: 212px;
-        border-radius: 25px;
-        border: none;
-        padding: 15px 11px 15px 11px;
-        box-shadow: $shadow;
-        cursor: pointer;
-        a{
-            text-decoration: none;
-            color: #ffff;
-        }
-    }
 }
 
 #working{
@@ -131,7 +88,7 @@ header{
         @include tablet-screen-M{
             display: flex;
             justify-content: space-evenly;
-    }
+        }
     }
     .instruction{
         background-color: $grey;
@@ -194,6 +151,12 @@ header{
             }
         }
     }
+            .active{
+            background-color: adjust-color($color: $primary-color,  $lightness: 35%); 
+            & > i{
+                color: $primary-color;
+            }
+        }
 }
 
 #restaurants{
@@ -213,24 +176,10 @@ header{
         flex-direction: column;
         align-items: center;
         padding: 0 0 0 0;
-        @include cardImgPos(1, 0, -52px);
-        @include cardImgPos(2, 0, -151px);
-        @include cardImgPos(3, 0, -55px);
-        @include cardImgPos(4, 0, -55px);
         @include tablet-screen-S{
             flex-direction: row;
             flex-wrap: wrap;
             justify-content: space-between;
-            @include cardImgPos(1, 0, 0px);
-            @include cardImgPos(2, 0, -68px);
-            @include cardImgPos(3, 0, 2px);
-            @include cardImgPos(4, 0, 0);
-        }
-        @include tablet-screen-M{
-            @include cardImgPos(1, 0, -35px);
-            @include cardImgPos(2, 0, -203px);
-            @include cardImgPos(3, 0, -93px);
-            @include cardImgPos(4, 0, -80px);
         }
     }
 }
@@ -259,9 +208,16 @@ header{
      }
      img{
          width: 100%;
-         height: 175px;
+         max-height: 178px;
          border-radius: 15px 15px 0 0;
-         object-fit: cover; 
+         object-fit: cover;
+         object-position: 50% 90%;
+         @include desktop-screen-1215px-menu{
+            object-position: 50% 50%;
+         } 
+     }
+     .third-img{
+         object-position: 50% 61%;
      }
     
 
@@ -271,67 +227,14 @@ header{
      p{
         padding: 0 0 20px 10px;
      }
-
-     .heart{
-        width: 15px;
-        height: 15px;
-        margin: 15px 20px 0 0;
-        position: absolute;
-        right: 15px;
-        bottom: 35px;
-        transform: rotate(45deg) scale(0.8);
-        border-bottom: 0.20em solid black;
-        border-right: 0.20em solid black;
-    
-     }  
-     .heart:before, .heart:after{
-        content: "";
-        height: 87%;
-        width: 87%;
-        position: absolute;
-        border: 0.20em solid transparent;
-        border-radius: 45px;
-        transform: rotate(45deg);
-        z-index: 2;
+     .fa-heart{
+         position: absolute;
+         font-size: 40px;
+         bottom: 20px;
+         right: 20px;
+         font-weight: 500;
+         transition: all 1500ms ease-in-out;
      }
-     .heart:before{
-        top:-9px;
-        left: -1px;
-        border-top-color: black;
-        border-left-color: black;
-     }
-     .heart:after{
-        top:-2px;
-        left: -9px;
-        transform: rotate(-136deg);
-        border-top-color: black;
-        border-right-color: black;
-        }
-    }
-
-footer {
-    background-color: $dark-black;
-    color: #ffff;
-    padding: 25px 0 20px 30px;
-    @include desktop-screen{
-        padding: 25px 0 20px 20%;
-    }
-    h2{
-        font-family: 'Shrikhand', cursive;
-        font-weight: 400;
-        font-size: 17px;
-        letter-spacing: 1px;
-        padding: 0 0 20px 0;
-    }
-    li{
-        list-style: none;
-        padding: 0 0 7px 0;
-        @include paddingIFoot(1, 0, 15px, 0, 0);
-        @include paddingIFoot(2, 0, 10px, 0, 0);
-        a{
-            text-decoration: none;
-            color: #ffff;
-        }
-    }
 }
+
 

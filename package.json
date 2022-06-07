@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "sass": "sass --watch ./sass/main.scss:./css/style.css -w --style compressed",
-    "prefix": "postcss ./css/style.css --use autoprefixer -d ./css/prefixed/"
+    "sassmenu": "sass --watch ./sass/menu_style.scss:./css/menu_style.css -w --style compressed",
+    "sassindex": "sass --watch ./sass/main.scss:./css/style.css -w --style compressed",
+    "prefixmenu": "postcss ./css/menu_style.css --use autoprefixer -d ./css/prefixed/",
+    "prefixindex": "postcss ./css/style.css --use autoprefixer -d ./css/prefixed/"
   },
   "repository": {
     "type": "git",
