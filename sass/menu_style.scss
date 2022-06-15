@@ -140,14 +140,16 @@ header{
         animation: 1s $plate-bezier $platedelay moveUp both;
         & :hover {
             &~ .check_container{
-                min-width: 74.4px;
+                width:20%;
                 background-color: $tertiary-color;
                 transform: translateX(0) scale(1);
             }
-            & + .description{
-                width: 20%;
+            &~ .description{
+                width: 70%;
             }
-
+            &~ .price{
+                width: 10%;
+            }
         }
         .description{
             padding: 15px 0 11px 10px;
@@ -166,15 +168,13 @@ header{
             }
         }
         .price{
-            min-width: 50px;
+            width: 20%;
             position: relative;
             transition: all 0.5s ease-in-out;
-            p{
-                position: absolute;
-                right: 15px;
-                bottom: 10px;
-            }
-
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            padding-bottom: 10px;
         }
         .check_container{           
             width: 0px;
@@ -193,7 +193,7 @@ header{
         animation: 1s $plate-bezier $platedelay*1.40 moveUp both;
     }
     .plate4{
-        animation:1s $plate-bezier $platedelay*1.60 moveUp both;
+        animation: 1s $plate-bezier $platedelay*1.60 moveUp both;
     }
 }
 
