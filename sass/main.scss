@@ -2,6 +2,7 @@
 @import "./components/_footer";
 @import "./components/button";
 @import "./mixins/mixins";
+@import "./components/_blurfog";
 
 *{
     margin: 0;
@@ -16,6 +17,108 @@ input, a{
         background-color: adjust-color($color: $primary-color,  $lightness: 35%);
         color: #0e0d0d              ;       
     }   
+}
+
+.blurfog{
+            animation: 3s $cubic-bezier blur ;
+            .loading-squares{
+                width: 100%;
+                position: absolute;
+                top: 50%;
+                margin: auto;
+            }
+}
+
+@keyframes blur{
+    0%,90%{
+        visibility: visible;
+        opacity: 0.9;
+    }
+    100%{
+        opacity:0;
+    }
+}
+
+.flex-bloc{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5vh;
+    .ball{
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        width:20px;
+        height:20px;
+        background-color: $tertiary_color;
+        z-index:1;
+        border-radius:  7px;
+        animation: $time $cubic-bezier $iterate ball-dance;
+        padding: 2px;
+        i{
+            font-size: 20px;
+            opacity: 0.65;
+            color: rgb(0, 0, 0);
+            animation: $time $cubic-bezier $iterate i-white;
+        }
+      }
+    .ball2{
+        animation: $time cubic-bezier(.36,.01,.65,.99) $delay  $iterate ball-dance;
+    }
+    .ball3{
+        animation: $time cubic-bezier(.36,.01,.65,.99) $delay*2  $iterate ball-dance;
+    }
+    .ball-shadow{
+        width:20px;
+        height:3px;
+        opacity:0.5;
+        border-radius:  30%;
+        box-shadow: 0px 10px 5px 4px rgba(37,43,59,0.9);
+        animation: $time $cubic-bezier  $iterate shadow-scale;
+    }
+    .shadow2{
+        animation: $time $cubic-bezier $delay*2 $iterate shadow-scale;
+    }
+    .shadow3{
+        animation: $time $cubic-bezier $delay*3 $iterate shadow-scale;
+    }
+  }
+
+#bloc-shadow{
+    gap: 5.45vh;
+}
+
+@keyframes ball-dance{
+    0%{
+    }
+    50%{
+        transform: translateY(-70px) scale(1.7) rotate(180deg) scaleX(0.9);
+        background-color: $secondary_color;
+    }
+    100%{
+        background-color: $primary_color;
+        transform: rotate(360deg) scaleY(0.9);
+    }
+}
+
+@keyframes i-white{
+    60%{
+        opacity: 0.9;
+    }
+}
+
+@keyframes shadow-scale{
+    0%,100%{
+        transform: scaleX(0.2) scaleY(0.2) skex(100deg);
+        opacity: 0.0;
+    }
+    50%,60%{
+        transform: scaleX(0.0010) scaleY(0.4);
+        opacity: 0.1;
+    }
+    90%{
+        opacity:0.35;
+    }
 }
 
 header{

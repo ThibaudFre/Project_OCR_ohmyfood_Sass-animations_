@@ -15,4 +15,10 @@ $breakpoints: (
     desktop-1215: 1215px,
     desktop: 1500px
 );
+$cubic-bezier: cubic-bezier(.36,.01,.65,.99);
+$plate-bezier: cubic-bezier(.4,0,.23,.55);
+$time: 1.5s;
+$delay: 0.3s;
+$platedelay: $delay + $time - 0.8s;
+$iterate:2;
 

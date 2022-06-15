@@ -14,5 +14,9 @@ button{
         border-radius: 3px;
         background-color: adjust-color($color: $primary-color,  $lightness: 35%);
         color: #0e0d0d              ;       
+    }
+    &:hover{
+        opacity: 0.9;
+        box-shadow: 0px 7px 13px 4px rgb(0 0 0 / 5%), 0px 7px 18px -2px rgb(0 0 0 / 30%);
     } 
 }

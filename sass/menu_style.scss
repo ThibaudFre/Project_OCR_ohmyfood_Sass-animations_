@@ -1,12 +1,14 @@
 @import "./utils/variables";
 @import "./components/footer";
 @import "./components/button";
+@import "./components/blurfog";
 
 *{
     margin: 0;
     padding: 0;
     font-family: 'Roboto', sans-serif;
 }
+
 input, a{
     &:focus{
         outline: 2px solid $primary-color;
@@ -18,10 +20,24 @@ input, a{
 a{
     text-decoration: none;    
 }
+
+.blurfog{
+    animation: $time $cubic-bezier blur;
+}
+@keyframes blur{
+    0%,70%{
+        visibility: visible;
+        opacity: 1;
+    }
+    100%{
+        opacity:0;
+    }
+}
 header{
     display: flex;
     position: relative;
     justify-content: center;
+    background-color: #ffff;
     padding: 17px 5px 10px 5px;
     i{
         font-size: 140%;
@@ -37,79 +53,70 @@ header{
     }
 }   
 #restaurant_img{
+    margin: 0;
     img{
-        object-fit: scale-down;
+        object-fit: cover;
         width: 100%;
+        height: 50vh;
     }
 }
-.menu{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: $grey;
-    position: relative;
-    border-radius: 25px 25px 0 0;
-    padding: 25px 4% 80px 4%;
-    margin: -50px 0 0 0;
-    @include desktop-screen-1215px-menu{
-        margin: -527px 0 0 0;
-    }
+.menu_bloc{
+    background-color: #ffff;
     @include desktop-screen{
-        padding: 25px 4% 80px 26%
+        display: flex;
+        justify-content: center;
     }
-    h2{
-        font-family: 'Shrikhand', cursive;
-        font-weight: 500;
-        font-size: 27px;
-    }
-    i{
-        position: absolute;
-        top: 30px;
-        right: 40px;
-        font-size: 25px;
+    .menu{
+        background-color: $grey;
+        border-radius: 25px 25px 0 0;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: -50px 0 0 0;
+        padding: 25px 4% 80px 4%;
         @include desktop-screen{
-            right: 35%;
+            width: 60%;
+            max-width: 1500px;
         }
-    }
-    .restaurant_name{
-        align-self: flex-start;
-        margin: 0 0 31px 0;
-    }
-    .bloc_menu-EPD{
-        width: 100%;
-        margin: 0 0 10px 0;
-        @include tablet-screen-940px-menu {
+        h2{
+            font-family: 'Shrikhand', cursive;
+            font-weight: 500;
+            font-size: 27px;
+        }
+        .fa-heart{
+            font-size: 25px;
+        }
+        .restaurant_name{
             display: flex;
-            flex-direction: row;
-            justify-content: flex-start;
+            justify-content: space-between;
+            width: 100%;
+            margin: 0 0 31px 0;
+        }
+        .bloc_menu-EPD{
+            width: 100%;
+            padding: 0 0 15px 0;
+            @include tablet-screen-940px-menu {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                
+            }
+        }
+        .modify_button{
+            min-width: 192px;
+            padding: 17px 0 17px 0;
+            font-size: 16px;
         }
     }
-    .modify_button{
-        min-width: 192px;
-        padding: 17px 0 17px 0;
-        font-size: 16px;
-        @include desktop-screen-1215px-menu{
-            align-self: flex-start;
-            margin: 0 0 0 460px;
-        }
-        @include desktop-screen{
-            align-self: flex-start;
-            margin: 0 0 0 335px;
-        }
-    }
-}
-#menu{
-    margin: -250px 0 0 0;
-    @include desktop-screen-1215px-menu{
-        margin: -450px 0 0 0;
-    }  
 }
 
 .EPD_container{
     margin: 0 0 35px 0;
     @include tablet-screen-940px-menu{
-        margin: 0 15px 35px 0;
+        width: 30%;
     }
+
     h3{
         margin: 0 0 0 7px;
         font-size: 16px;
@@ -122,28 +129,79 @@ header{
         margin: 5px 0 12px 7px;
     }
     .plate{
-        padding: 15px 0 11px 10px;
         background-color: #ffff;
+        overflow: hidden;
         border-radius: 15px;
         margin: 15px 0 15px 0;
         box-shadow: $shadow;
         display: flex;
-        .description{
-            flex: 3;
-            h4{
-                font-size: 19px;
-                margin: 0 0 5px 0;
+        transform: translateY(13px);
+        opacity: 0;
+        animation: 1s $plate-bezier $platedelay moveUp both;
+        & :hover {
+            &~ .check_container{
+                min-width: 74.4px;
+                background-color: $tertiary-color;
+                transform: translateX(0) scale(1);
             }
-        }
-        .price{
-            flex: 0.6;
-            position: relative;
-            p{
-                position: absolute;
-                right: 15px;
-                bottom: 0;
+            & + .description{
+                width: 20%;
             }
 
         }
+        .description{
+            padding: 15px 0 11px 10px;
+            width: 80%;
+            white-space: nowrap;
+            transition: all 0.5s ease-in-out;
+            p, h4{
+                text-overflow: ellipsis;
+                overflow: hidden;
+            }
+            h4{
+                font-size: 19px;
+                margin: 0 0 5px 0;
+                text-overflow: ellipsis;
+                overflow: hidden;
+            }
+        }
+        .price{
+            min-width: 50px;
+            position: relative;
+            transition: all 0.5s ease-in-out;
+            p{
+                position: absolute;
+                right: 15px;
+                bottom: 10px;
+            }
+
+        }
+        .check_container{           
+            width: 0px;
+            transition: all 0.5s ease-in-out;
+            transform: translateX(100px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #ffff; 
+        }
+    }
+    .plate2{
+        animation: 1s $plate-bezier $platedelay*1.20 moveUp both;
+    }
+    .plate3{
+        animation: 1s $plate-bezier $platedelay*1.40 moveUp both;
+    }
+    .plate4{
+        animation:1s $plate-bezier $platedelay*1.60 moveUp both;
+    }
+}
+
+@keyframes moveUp{
+    70%,100%{
+        opacity: 1;
+    }
+    100%{
+        transform: translateY(0);
     }
 }
