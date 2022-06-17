@@ -2,6 +2,7 @@
 @import "./components/footer";
 @import "./components/button";
 @import "./components/blurfog";
+@import "./components/heart";
 
 *{
     margin: 0;
@@ -66,6 +67,14 @@ header{
         display: flex;
         justify-content: center;
     }
+    .heart-bloc{
+        right: 50px;
+        bottom: initial;
+        @include tablet-screen-M{
+            right: 90px;
+        }
+
+    }
     .menu{
         background-color: $grey;
         border-radius: 25px 25px 0 0;
@@ -83,9 +92,6 @@ header{
             font-family: 'Shrikhand', cursive;
             font-weight: 500;
             font-size: 27px;
-        }
-        .fa-heart{
-            font-size: 25px;
         }
         .restaurant_name{
             display: flex;
@@ -138,24 +144,28 @@ header{
         transform: translateY(13px);
         opacity: 0;
         animation: 1s $plate-bezier $platedelay moveUp both;
-        & :hover {
-            &~ .check_container{
-                width:20%;
+        &:hover {
+            &> .check_container{
+                width: 30%;
                 background-color: $tertiary-color;
-                transform: translateX(0) scale(1);
+                transform: translateX(3px);
             }
-            &~ .description{
+            &> .desc-price-bloc{
                 width: 70%;
             }
-            &~ .price{
-                width: 10%;
+            & i{
+                transform: rotate(360deg);
             }
+        }
+        .desc-price-bloc{
+            transition: all 0.6s ease-in-out;
+            display: flex;
+            width: 100%;
         }
         .description{
             padding: 15px 0 11px 10px;
-            width: 80%;
+            width: 75%;
             white-space: nowrap;
-            transition: all 0.5s ease-in-out;
             p, h4{
                 text-overflow: ellipsis;
                 overflow: hidden;
@@ -169,21 +179,25 @@ header{
         }
         .price{
             width: 20%;
-            position: relative;
             transition: all 0.5s ease-in-out;
             display: flex;
             justify-content: center;
             align-items: flex-end;
-            padding-bottom: 10px;
+            padding: 0 0 10px 0;
+            font-weight: 600;
         }
-        .check_container{           
-            width: 0px;
-            transition: all 0.5s ease-in-out;
-            transform: translateX(100px);
+        .check_container{ 
+            font-size: 3.5vh;          
+            transition: all 0.7s ease-in-out;
+            transform: translateX(200px);
             display: flex;
             justify-content: center;
             align-items: center;
-            color: #ffff; 
+            color: #ffff;
+            i{
+                transition: all 1s ease-in-out;
+                color: #ffff;
+            } 
         }
     }
     .plate2{
