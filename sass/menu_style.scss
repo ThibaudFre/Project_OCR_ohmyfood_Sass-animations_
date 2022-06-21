@@ -1,15 +1,16 @@
-@import "./utils/variables";
-@import "./components/footer";
-@import "./components/button";
-@import "./components/blurfog";
-@import "./components/heart";
-
+//import files
+@import "./utils/variables"; //variables used
+@import "./components/footer"; //footer
+@import "./components/button"; //button
+@import "./components/blurfog"; //fog loading animation
+@import "./components/heart"; //hearts liked
+//general parameters
 *{
     margin: 0;
     padding: 0;
     font-family: 'Roboto', sans-serif;
 }
-
+//focus parameters
 input, a{
     &:focus{
         outline: 2px solid $primary-color;
@@ -18,10 +19,11 @@ input, a{
         color: #0e0d0d              ;       
     }   
 }
+//deletion of all the basic parameters
 a{
     text-decoration: none;    
 }
-
+// fog animation when the page is loading
 .blurfog{
     animation: $time $cubic-bezier blur;
 }
@@ -34,12 +36,14 @@ a{
         opacity:0;
     }
 }
+//header parameters
 header{
     display: flex;
     position: relative;
     justify-content: center;
     background-color: #ffff;
     padding: 17px 5px 10px 5px;
+    //header's icons parameters
     i{
         font-size: 140%;
         position: absolute;
@@ -47,12 +51,14 @@ header{
         top: 39%;
         color: black;
     }
+    //header's h1 "ohmyfood" parameters
     h1{
         font-family: 'Shrikhand', cursive;
         font-size: 190%;
         font-weight: 500;
     }
-}   
+}
+//parameters of the restaurant img   
 #restaurant_img{
     margin: 0;
     img{
@@ -61,20 +67,26 @@ header{
         height: 50vh;
     }
 }
+//parameters of the menu section
 .menu_bloc{
     background-color: #ffff;
+    //responsive parameters over 1500px
     @include desktop-screen{
         display: flex;
         justify-content: center;
     }
+    //postioning of the heart animation
     .heart-bloc{
         right: 50px;
         bottom: initial;
+        //responsive parameters over 900px
         @include tablet-screen-M{
             right: 90px;
         }
 
     }
+    /*parameters of the menu container; helping to center all the content when the page is
+     over 1500px*/
     .menu{
         background-color: $grey;
         border-radius: 25px 25px 0 0;
@@ -84,24 +96,29 @@ header{
         align-items: center;
         margin: -50px 0 0 0;
         padding: 25px 4% 80px 4%;
+        //responsive parameters over 1500px
         @include desktop-screen{
             width: 60%;
             max-width: 1500px;
         }
+        //parameters of the menu's h2
         h2{
             font-family: 'Shrikhand', cursive;
             font-weight: 500;
             font-size: 27px;
         }
+        //parameters of the restaurant's name including the name and the heart-bloc
         .restaurant_name{
             display: flex;
             justify-content: space-between;
             width: 100%;
             margin: 0 0 31px 0;
         }
+        //parameters of the Appetizers/Dishes/Desserts containers
         .bloc_menu-EPD{
             width: 100%;
             padding: 0 0 15px 0;
+            //responsive parameters over 940px
             @include tablet-screen-940px-menu {
                 display: flex;
                 flex-direction: row;
@@ -109,32 +126,42 @@ header{
                 
             }
         }
-        .modify_button{
+        /*specific parameters of the menus's button
+
+         *** you can check the  general parameters button
+        in the _button.scss file stored in the components folder***
+
+        */
+        .button_small{
             min-width: 192px;
             padding: 17px 0 17px 0;
             font-size: 16px;
         }
     }
 }
-
+//parameters of the plates container (appetizers or dishes or desserts)
 .EPD_container{
     margin: 0 0 35px 0;
+    //responsive parameters over 940px
     @include tablet-screen-940px-menu{
         width: 30%;
     }
-
+    //parameters of the h3 "APPETIZERS"/"ENTRÉES", "DISHES"/"PLATS", "DESSERTS"/"DESSERTS"
     h3{
         margin: 0 0 0 7px;
         font-size: 16px;
         font-weight: 400;
     }
+    //parameters of the green line under the EPD_container's h3
     .under_line{
         width: 45px;
         height: 3px;
         background-color: $tertiary-color;
         margin: 5px 0 12px 7px;
     }
+    //parameters of the plate container
     .plate{
+        cursor: pointer;
         background-color: #ffff;
         overflow: hidden;
         border-radius: 15px;
@@ -144,32 +171,41 @@ header{
         transform: translateY(13px);
         opacity: 0;
         animation: 1s $plate-bezier $platedelay moveUp both;
+        //transition when the house go over the plate
         &:hover {
+            //check_container become bigger and hidden to visible from the right to the left
             &> .check_container{
                 width: 30%;
                 background-color: $tertiary-color;
                 transform: translateX(3px);
             }
+            //the description/price container become smaller to let place for the check_container
             &> .desc-price-bloc{
                 width: 70%;
             }
+            //the selected icon do a rotation from the left to the right
             & i{
                 transform: rotate(360deg);
             }
         }
+        //base parameters of the description/price container
         .desc-price-bloc{
             transition: all 0.6s ease-in-out;
             display: flex;
             width: 100%;
         }
+        //parameters of the plates description
         .description{
             padding: 15px 0 11px 10px;
             width: 75%;
             white-space: nowrap;
+            /*parameters to hide the text which exceeds when the description container
+            is too small*/
             p, h4{
                 text-overflow: ellipsis;
                 overflow: hidden;
             }
+            //parameters of the h4/ plate's name
             h4{
                 font-size: 19px;
                 margin: 0 0 5px 0;
@@ -177,6 +213,7 @@ header{
                 overflow: hidden;
             }
         }
+        //parameters of the price container
         .price{
             width: 20%;
             transition: all 0.5s ease-in-out;
@@ -186,7 +223,9 @@ header{
             padding: 0 0 10px 0;
             font-weight: 600;
         }
-        .check_container{ 
+        //parameters of the check_container
+        .check_container{
+            width: 0px; 
             font-size: 3.5vh;          
             transition: all 0.7s ease-in-out;
             transform: translateX(200px);
@@ -194,12 +233,15 @@ header{
             justify-content: center;
             align-items: center;
             color: #ffff;
+            //parameters of the selected icon of the check_container
             i{
                 transition: all 1s ease-in-out;
                 color: #ffff;
             } 
         }
     }
+    /*plate 2 3 and 4 's animation  and delay / when the page appear after loaded, the plates 
+    appear one after the other*/
     .plate2{
         animation: 1s $plate-bezier $platedelay*1.20 moveUp both;
     }

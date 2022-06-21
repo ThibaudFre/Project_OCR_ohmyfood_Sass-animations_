@@ -1,3 +1,4 @@
+//specific mixin to set the padding of the 2 first footer's li
 @mixin paddingIFoot($numb, $top, $right, $down, $left) {
     &:nth-child(#{$numb}){
         i{
@@ -6,36 +7,37 @@
         }
     }
 }
-
+//responsive @media rule for screen over 385px
 @mixin mobile-screen-L {
     @media screen and (min-width: map-get($breakpoints, mobile-large)) {
         @content;
     }
 }
-
-@mixin tablet-screen-940px-menu {
-    @media screen and (min-width: map-get($breakpoints, tablet-940)) {
-        @content;
-    }
-}
-
+//responsive @media rule for screen over 599px
 @mixin tablet-screen-S {
     @media screen and (min-width: map-get($breakpoints, tablet-small)) {
         @content;
     }
 }
-
+//responsive @media rule for screen over 900px
 @mixin tablet-screen-M {
     @media screen and (min-width: map-get($breakpoints, tablet-medium)) {
         @content;
     }
 }
+//responsive @media rule for screen over 940px
+@mixin tablet-screen-940px-menu {
+    @media screen and (min-width: map-get($breakpoints, tablet-940)) {
+        @content;
+    }
+}
+//responsive @media rule for screen over 1215px
 @mixin desktop-screen-1215px-menu {
     @media screen and (min-width: map-get($breakpoints, desktop-1215)) {
         @content;
     }
 }
-
+//responsive @media rule for screen over 1500px
 @mixin desktop-screen {
         @media screen and (min-width: map-get($breakpoints, desktop)) {
             @content;

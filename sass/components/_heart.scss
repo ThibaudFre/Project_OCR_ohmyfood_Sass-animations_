@@ -1,17 +1,20 @@
+//import of variables file
 @import "./../utils/variables";
-
+//parameters of the heart container
 .heart-bloc{
     cursor: pointer;
     position: absolute;
     right: 70px;
     bottom: 60px;
     font-size: 35px;
+    //parameters of the empty heart icon
     & > .empty-heart{
         position: absolute;
         opacity: 1;
         font-weight: 500;
         transition: all 0.5s ease-in-out 0.1s;
     }
+    //parameters of the full heart icon
     & > .full-heart{
         color: $secondary-color;
         position: absolute;
@@ -21,6 +24,8 @@
         transform: scale(0.7);
         transform-origin: center;
     }
+    /*when the house go over the empty heart it disappear to let appear the full one with a pink
+    background-color*/
     &:hover{
         & > .empty-heart{
             opacity: 0;

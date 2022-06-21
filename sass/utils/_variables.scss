@@ -1,12 +1,15 @@
-$dark-black: rgb(53, 53, 53);
-$icon-color: #7e7e7e;
-$darkgrey: rgb(234, 234, 234);
-$grey: rgb(246, 246, 246);
-$primary-color: #9356DC;
-$secondary-color: #FF79DA;
-$gradient: linear-gradient(176deg, $secondary-color 10%, $primary-color 100%);
-$tertiary_color: #99E2D0;
-$shadow: 0px 7px 13px 4px rgb(0 0 0 / 5%), 0px 7px 18px -2px rgb(0 0 0 / 10%);
+$dark-black: rgb(53, 53, 53); //dark black color
+$icon-color: #7e7e7e;//instruction's icons color
+$darkgrey: rgb(234, 234, 234);//dark grey color
+$grey: rgb(246, 246, 246);//grey color
+$primary-color: #9356DC; //primary-color
+$secondary-color: #FF79DA;//secondary-color
+$gradient: linear-gradient(176deg, $secondary-color 10%, $primary-color 100%); /*pink to purple
+gradient color*/
+$tertiary_color: #99E2D0;//tertiary-color
+$shadow: 0px 7px 13px 4px rgb(0 0 0 / 5%), 0px 7px 18px -2px rgb(0 0 0 / 10%);/*generic shadow
+parameter*/
+/*responsive screen-sizes parameters*/
 $breakpoints: (
     mobile-large: 385px,
     tablet-small: 599px,
@@ -15,10 +18,10 @@ $breakpoints: (
     desktop-1215: 1215px,
     desktop: 1500px
 );
-$cubic-bezier: cubic-bezier(.36,.01,.65,.99);
-$plate-bezier: cubic-bezier(.4,0,.23,.55);
-$time: 1.5s;
-$delay: 0.3s;
-$platedelay: $delay + $time - 0.8s;
-$iterate:2;
+$cubic-bezier: cubic-bezier(.36,.01,.65,.99); //generic cubic bezier animation parameter
+$plate-bezier: cubic-bezier(.4,0,.23,.55); //specific cubic bezier for menu's plates animation
+$time: 1.5s; //time animation or transition parameter
+$delay: 0.3s; //delay animation or transition parameter
+$platedelay: $delay + $time - 0.8s; // specific delay animation for menu's plate animation
+$iterate:2; //iteration parameter for loading-squares animation
 

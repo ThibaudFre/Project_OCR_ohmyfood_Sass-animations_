@@ -1,16 +1,18 @@
-@import "./utils/variables";
-@import "./components/_footer";
-@import "./components/button";
-@import "./mixins/mixins";
-@import "./components/_blurfog";
-@import "./components/heart";
+//import files
+@import "./utils/variables"; //variables used
+@import "./components/_footer"; //footer
+@import "./components/button"; //button
+@import "./mixins/mixins"; //mixins
+@import "./components/_blurfog"; //fog loading animation
+@import "./components/heart"; //hearts liked
 
+//general parameters
 *{
     margin: 0;
     padding: 0;
     font-family: 'Roboto', sans-serif;
 }
-
+//focus parameters
 input, a{
     &:focus{
         outline: 2px solid $primary-color;
@@ -19,7 +21,7 @@ input, a{
         color: #0e0d0d              ;       
     }   
 }
-
+//setting of the blurfog animation and loading-squares animation when the page is loading
 .blurfog{
             animation: 3s $cubic-bezier blur ;
             .loading-squares{
@@ -39,12 +41,13 @@ input, a{
         opacity:0;
     }
 }
-
+//parameters of the loading squares container
 .flex-bloc{
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 5vh;
+    //parameters of the squares
     .ball{
         display:flex;
         justify-content: center;
@@ -56,6 +59,7 @@ input, a{
         border-radius:  7px;
         animation: $time $cubic-bezier $iterate ball-dance;
         padding: 2px;
+        //parameters of the squares's icons
         i{
             font-size: 20px;
             opacity: 0.65;
@@ -63,12 +67,15 @@ input, a{
             animation: $time $cubic-bezier $iterate i-white;
         }
       }
+    /*setting of the ball2 and ball3 delay, to create a delay difference between each 
+    square animation*/
     .ball2{
         animation: $time cubic-bezier(.36,.01,.65,.99) $delay  $iterate ball-dance;
     }
     .ball3{
         animation: $time cubic-bezier(.36,.01,.65,.99) $delay*2  $iterate ball-dance;
     }
+    //parameters of the square shadows
     .ball-shadow{
         width:20px;
         height:3px;
@@ -77,6 +84,8 @@ input, a{
         box-shadow: 0px 10px 5px 4px rgba(37,43,59,0.9);
         animation: $time $cubic-bezier  $iterate shadow-scale;
     }
+    /*Same idea than for the squares. Each shadow have a different delay
+    to follow their respective squares - setting of the shadow 2 and 3 delay*/
     .shadow2{
         animation: $time $cubic-bezier $delay*2 $iterate shadow-scale;
     }
@@ -84,11 +93,13 @@ input, a{
         animation: $time $cubic-bezier $delay*3 $iterate shadow-scale;
     }
   }
-
+//setting of the space between each shadows
 #bloc-shadow{
     gap: 5.45vh;
 }
-
+/*keyframes of the dancing balls: moving up, enlarging (1.7X time inititial), rotating from
+the left to the right to do 360 degrees and crashing to create a rebound effect - repeating
+ 2 times to get the rebound*/
 @keyframes ball-dance{
     0%{
     }
@@ -101,13 +112,15 @@ input, a{
         transform: rotate(360deg) scaleY(0.9);
     }
 }
-
+//opacity effect of the icons during the ball dance animation
 @keyframes i-white{
     60%{
         opacity: 0.9;
     }
 }
-
+/*Keyframes of the shadow moving: enlarging in the x and y axis when the ball is away and his 
+oposit when she is close - setting of the opacity: more the ball is away, more the shadow's
+opacity is low / and more the ball is close more the shadow's opacity is high*/
 @keyframes shadow-scale{
     0%,100%{
         transform: scaleX(0.2) scaleY(0.2) skex(100deg);
@@ -121,19 +134,22 @@ input, a{
         opacity:0.35;
     }
 }
-
+//parameters of the header
 header{
     display: flex;
     justify-content: center;
+    //parameters of the header's link img "ohmyfood"
     a{
         display: flex;
         justify-content: center;
+        //parameters of the header's img "ohmyfood"
         img{
             width: 44%;
             margin: 20px 0 11px 0;
         }
     }
 }
+//parameters of the input container under the header
 .under_header{
     background-color: $darkgrey;
     box-shadow: 0px 23px 19px -33px #0e0d0d inset;
@@ -142,7 +158,7 @@ header{
     align-items: center;
     padding: 10px 0 10px 54px;
     font-size: 17px;
-
+    //parameters of the header's input
     input{
         margin-left: 16px;
         border: none;
@@ -151,13 +167,14 @@ header{
         font-size: 17px;
         font-weight: 500;
         background-color: transparent;
+        //unsetting of the default color parameter of the input
         &::placeholder{
             color:black;
         }
     }
 
 }
-
+//parameters of the explore: "Réservez le menu qui vous convient" container
 .explore{
     background-color: $grey;
     text-align: center;
@@ -166,34 +183,41 @@ header{
     display: flex;
     flex-direction: column;
     align-items: center;
+    //parameters fo the explore's h2
     h2{
         width: 70%;
         padding: 0 0 13px 0;
     }
+    //parameters fo the explore's p
     p{
         font-size: 18px;
         font-weight: 350;
         margin: 0 0 29px 0;
     }
 }
-
+//parameters of instructions container explaining how the website is working named #working
 #working{
     padding: 52px 5px 45px 18px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+    //responsive parameters over 1500px
     @include desktop-screen{
         padding: 52px 20% 45px 20%;
     }
+    //parameters of the working's h2
     h2{
         margin: 0 0 15px 2px;
     }
+    //parameters of the instruction bloc putting them following in row whe the screen is over 900px
     .instruction-bloc{
+        //responsive parameters over 900px
         @include tablet-screen-M{
             display: flex;
             justify-content: space-evenly;
         }
     }
+    //instruction div parameters
     .instruction{
         background-color: $grey;
         margin: 13px 13px 25px 13px;
@@ -207,17 +231,20 @@ header{
         font-size: 17px;
         font-weight: 500;
         transition: all 200ms cubic-bezier(.91,0,.57,1);
+        //responsive parameters over 385px
         @include mobile-screen-L{
             justify-content: center;
         }
+        //responsive parameters over 599px
         @include tablet-screen-S{
             justify-content: center;
         }
+        //responsive parameters over 900px
         @include tablet-screen-M{
             width: 640px;
             padding: 25px 0 25px 0;
         }
-
+        //instructions's number "1" "2" "3" parameters
         .numb {
             position: absolute;
             left: -12px;
@@ -231,23 +258,30 @@ header{
             background-color: $primary-color;
             font-size: 14px;
         }
+        //instructions's icons parameters
         i{
             color: $icon-color;
             font-size: 19px;
             padding: 2px 20px 0 0;
+            //responsive parameters over 599px
             @include tablet-screen-S{
                 padding: 2px 37px 0 0px;
             }
         }
+        //instructions's p parameters
         p{
             padding: 2px 0 0 0;
+            //responsive parameters over 385px
             @include mobile-screen-L{
                 padding: 2px 74px 0 0;
             }
+            //responsive parameters over 900px
             @include tablet-screen-M{
                 padding: 2px 0 0 0;
             }
         }
+        /*when the house go over the instruction, changing of the background 
+        to a light purple color*/
         &:hover{
             background-color: adjust-color($color: $primary-color,  $lightness: 35%);
             & > i{
@@ -255,31 +289,39 @@ header{
             }
         }
     }
-            .active{
+        /* demonstration parameters of the effect on the last instruction when the house go
+        hover this one and that the effect is active: changing the background-colorto 
+        a light purple color*/
+        .active{
             background-color: adjust-color($color: $primary-color,  $lightness: 35%); 
             & > i{
                 color: $primary-color;
             }
         }
 }
-
+//parameters of the restaurants section
 #restaurants{
     background-color: $grey;
     padding: 52px 18px 45px 18px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+    //responsive parameters over 1500px
     @include desktop-screen{
         padding: 52px 20.9% 45px 20.1%;
     }
+    //restaurants's h1 padding setting
     h1{
         padding: 0 0 12px 0;
     }
+    /*restaurant container parameters putting the cards in row and wrapping when the screen
+    size is over 599px*/
     .restaurant-bloc{
         display: flex;
         flex-direction: column;
         align-items: center;
         padding: 0 0 0 0;
+        //responsive parameters over 599px
         @include tablet-screen-S{
             flex-direction: row;
             flex-wrap: wrap;
@@ -287,50 +329,56 @@ header{
         }
     }
 }
-
+//restaurants cards parameters
 .cards{
     width: 100%;
     border-radius: 15px;
     box-shadow: $shadow;
     margin: 10px 0 10px 0;
     position: relative;
+    //responsive parameters over 599px
     @include tablet-screen-S{
         max-width: 48.5%;
         margin: 10px 0 10px 0;
     }
-     .new{
-         color: #008766;
-         background-color: $tertiary_color;
-         padding: 6px 12px 6px 12px;
-         border-radius: 2px;
-         text-align: center;
-         font-size: 14px;
-         font-weight: 450;
-         position: absolute;
-         top: 15px;
-         right: 15px;
-     }
-     img{
-         width: 100%;
-         max-height: 178px;
-         border-radius: 15px 15px 0 0;
-         object-fit: cover;
-         object-position: 50% 90%;
-         @include desktop-screen-1215px-menu{
+    //"new"/"Nouveau" tag parameters of the 2 first cards
+    .new{
+        color: #008766;
+        background-color: $tertiary_color;
+        padding: 6px 12px 6px 12px;
+        border-radius: 2px;
+        text-align: center;
+        font-size: 14px;
+        font-weight: 450;
+        position: absolute;
+        top: 15px;
+        right: 15px;
+    }
+    //cards's img parameters
+    img{
+        width: 100%;
+        max-height: 178px;
+        border-radius: 15px 15px 0 0;
+        object-fit: cover;
+        object-position: 50% 90%;
+        //responsive parameters over 1215px, changing the img position
+        @include desktop-screen-1215px-menu{
             object-position: 50% 50%;
-         } 
-     }
-     .third-img{
-         object-position: 50% 61%;
-     }
+        } 
+    }
+    //specific setting of the 3rd img position
+    .third-img{
+        object-position: 50% 61%;
+    }
     
-
-     h3{
-         padding: 15px 0 5px 10px;
-     }
-     p{
+     //padding set of the cards's h3
+    h3{
+        padding: 15px 0 5px 10px;
+    }
+     //padding set of the cards's p
+    p{
         padding: 0 0 20px 10px;
-     }
+    }
 
 }
 

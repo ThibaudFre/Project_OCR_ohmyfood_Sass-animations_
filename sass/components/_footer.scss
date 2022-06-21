@@ -1,13 +1,16 @@
+//import of mixins and variables files
 @import "./../mixins/mixins";
 @import "./../utils/variables";
-
+//parameters of the footers
 footer {
     background-color: $dark-black;
     color: #ffff;
     padding: 25px 0 20px 30px;
+    //responsive parameters over 1500px
     @include desktop-screen{
         padding: 25px 0 20px 21%;
     }
+    //parameters of the footers 's h2
     h2{
         font-family: 'Shrikhand', cursive;
         font-weight: 400;
@@ -15,33 +18,41 @@ footer {
         letter-spacing: 1px;
         padding: 0 0 20px 0;
     }
+    //parameters of the footers 's ul when the screen size is over 1500px
     ul{
+        //responsive parameters over 1500px
         @include desktop-screen{
             display: flex;
             justify-content: space-between;
             width: 70%;
         }
     }
+    //parameters of the footers 's li
     li{
-        list-style: none;
+        list-style: none; //unsetting of defaults li's parameters
         padding: 0 0 7px 0;
+        //setting of the 2 first footers's li
         @include paddingIFoot(1, 0, 15px, 0, 0);
         @include paddingIFoot(2, 0, 10px, 0, 0);
+        //parameters of the li's links
         a{
             text-decoration: none;
             color: #ffff;
         }
     }
 }
-
+//specific parameters for the menu's footer
 .footer-menu{
+    //footer's ul parameters for screen sized over 1500px
     ul{
-          @include desktop-screen{
+        //responsive parameters over 1500px
+        @include desktop-screen{
             display: flex;
             justify-content: space-between;
             width: 77%;
         }     
     }
+    //responsive parameters over 1500px
     @include desktop-screen{
         padding: 25px 0 20px 18%;
     }
