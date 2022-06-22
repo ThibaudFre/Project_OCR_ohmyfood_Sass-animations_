@@ -123,7 +123,6 @@ oposit when she is close - setting of the opacity: more the ball is away, more t
 opacity is low / and more the ball is close more the shadow's opacity is high*/
 @keyframes shadow-scale{
     0%,100%{
-        transform: scaleX(0.2) scaleY(0.2) skex(100deg);
         opacity: 0.0;
     }
     50%,60%{
